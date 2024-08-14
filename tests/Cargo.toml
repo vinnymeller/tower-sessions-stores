@@ -15,13 +15,11 @@ tower = { version = "0.4.13", features = ["util"] }
 tower-cookies = "0.11.0"
 tower-sessions = "0.14.0"
 tower-sessions-sqlx-store = { path = "../sqlx-store/", features = [
-  "sqlite",
-  "mysql",
-  "postgres",
+    "sqlite",
+    "mysql",
+    "postgres",
+    "chrono",
 ] }
-tower-sessions-redis-store = { path = "../redis-store/" }
-tower-sessions-mongodb-store = { path = "../mongodb-store/" }
-tower-sessions-moka-store = { path = "../moka-store/" }
 
 [[test]]
 name = "test_integration"
