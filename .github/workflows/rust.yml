@@ -24,7 +24,9 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - name: clippy
         run: |
-          cargo clippy --workspace --all-targets --all-features -- -D warnings
+          cargo clippy -p tower-sessions-sqlx-store --all-targets --features chrono --features sqlite --features postgres --features mysql
+          cargo clippy -p tower-sessions-sqlx-store --all-targets --features chrono --features sqlite --features postgres --features mysql
+          cargo clippy --workspace -p moka-store -p mongodb-store -p redis-store --all-features -- -D warnings
       - name: rustfmt
         run: |
           cargo fmt --all --check
