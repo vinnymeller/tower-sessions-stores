@@ -19,9 +19,6 @@ tower-sessions-sqlx-store = { path = "../sqlx-store/", features = [
     "mysql",
     "postgres",
 ] }
-tower-sessions-redis-store = { path = "../redis-store/" }
-tower-sessions-mongodb-store = { path = "../mongodb-store/" }
-tower-sessions-moka-store = { path = "../moka-store/" }
 
 [[test]]
 name = "test_integration"

@@ -8,8 +8,6 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  REDIS_URL: redis://localhost:6379/1
-  MONGODB_URL: mongodb://localhost:27017
   POSTGRES_URL: postgres://postgres:postgres@localhost:5432
   MYSQL_URL: mysql://root@127.0.0.1:3306/public
 
@@ -25,8 +23,7 @@ jobs:
       - name: clippy
         run: |
           cargo clippy -p tower-sessions-sqlx-store --all-targets --features chrono --features sqlite --features postgres --features mysql
-          cargo clippy -p tower-sessions-sqlx-store --all-targets --features chrono --features sqlite --features postgres --features mysql
-          cargo clippy --workspace -p moka-store -p mongodb-store -p redis-store --all-features -- -D warnings
+          cargo clippy -p tower-sessions-sqlx-store --all-targets --features time --features sqlite --features postgres --features mysql
       - name: rustfmt
         run: |
           cargo fmt --all --check
@@ -51,12 +48,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - store: redis_store
-            docker: true
-
-          - store: mongodb_store
-            docker: true
-
           - store: postgres_store
             docker: true
 
@@ -64,12 +55,6 @@ jobs:
             docker: true
 
           - store: sqlite_store
-            docker: false
-
-          - store: moka_store
-            docker: false
-
-          - store: caching_store
             docker: false
 
     steps:
