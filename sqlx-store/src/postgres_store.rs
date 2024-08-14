@@ -1,10 +1,10 @@
+use crate::{convert_expiry_date, current_time, SqlxStoreError};
 use async_trait::async_trait;
 use sqlx::{PgConnection, PgPool};
 use tower_sessions_core::{
     session::{Id, Record},
     session_store, ExpiredDeletion, SessionStore,
 };
-use crate::{convert_expiry_date, current_time, SqlxStoreError};
 
 /// A PostgreSQL session store.
 #[derive(Clone, Debug)]
