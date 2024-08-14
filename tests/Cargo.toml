@@ -18,6 +18,7 @@ tower-sessions-sqlx-store = { path = "../sqlx-store/", features = [
     "sqlite",
     "mysql",
     "postgres",
+    "chrono",
 ] }
 
 [[test]]
