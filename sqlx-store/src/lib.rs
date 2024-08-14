@@ -73,5 +73,6 @@ pub fn convert_expiry_date(expiry_date: time::OffsetDateTime) -> time::OffsetDat
 #[cfg(feature = "chrono")]
 pub fn convert_expiry_date(expiry_date: time::OffsetDateTime) -> chrono::DateTime<chrono::Utc> {
     // if we can't convert the expiry date to a chrono type, return the current time i.e. effectively assume our session has expired
-    chrono::DateTime::from_timestamp(expiry_date.unix_timestamp(), expiry_date.nanosecond()).unwrap_or(chrono::Utc::now())
+    chrono::DateTime::from_timestamp(expiry_date.unix_timestamp(), expiry_date.nanosecond())
+        .unwrap_or(chrono::Utc::now())
 }
